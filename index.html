@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147268561-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-147268561-1');
+</script>
+
+
+<title>eguap</title>
+<meta name=description content="Módulo eguap da linguagem de programação egua">
+<meta name=author content="Lucas Pompeu">
+<link rel="icon" href="egua.png" type="image/x-icon">
+<script src="grammar/egua.js"></script>
+<script src="main.js"></script>
+<script src="examples.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="styles.css">
+</head>
+<body>
+<div id="editor"># eguap IDE [egua.tech]
+
+x = "eguap"
+escreva x
+</div>
+<div id="navbar">
+	<button id="runbtn">Executar</button>
+	<div id="logo">
+		<img src="logo.png" id="aaa">
+	</div>
+	<select id="examples" name="Examples">
+	  <option value="-1">Exemplos</option>
+	</select>
+</div>
+<div id="console">
+	<button id="clearbtn">Limpar</button>
+</div>
+
+<script src="lib/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/jqconsole.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+	// Set up the console
+	var jqconsole = $('#console').jqconsole('', '>>>');
+	var startPrompt = function () {
+	  // Start the prompt with history enabled.
+	  jqconsole.Prompt(true, function (input) {
+	    // Output input with the class jqconsole-output.
+	    jqconsole.Write(input + '\n', 'jqconsole-output');
+	    // Restart the prompt.
+	    startPrompt();
+	  });
+	};
+	//startPrompt();
+	jqconsole.Write('>> ','jqconsole-output');
+	// Set up the editor
+	var editor = ace.edit("editor");
+	editor.setTheme("ace/theme/monokai");
+	editor.getSession().setMode("ace/mode/python");
+
+	// Handle run button interaction
+	$( "#runbtn" ).click(function() {
+		resetForRun();
+		try {
+			// Grammar is not perfect, have to have it end with a line break
+			var output = egua.parse(editor.getValue()+'\n')
+			if(output == true) {
+				jqconsole.Write('Egua 0.1.2 | [egua.tech]\nPrograma sintaticamente correto: '+output+'\nPrograma em execução:\n\n', 'jqconsole-output');
+				eval(finalprogram);
+				jqconsole.Write('\n', 'jqconsole-output');
+			}
+		} catch(exception) {
+			jqconsole.Write(exception + '\n\n', 'jqconsole-output');
+		}
+		jqconsole.Write('>> ','jqconsole-output');
+	});
+
+	// Clear console button
+	$( "#clearbtn" ).click(function() {
+		jqconsole.Reset();
+	});
+
+	// Populate the dropdown examples select
+	var select = $('#examples');
+	for(var i =0;i<examples.length;i++) {
+		select.append('<option value="'+i+'">'+examples[i].name+'</option>');
+	}
+	select.change(function() {
+		var selectedndx = parseInt($( "#examples option:selected" ).attr('value'), 10);
+		if(selectedndx > -1) {
+			editor.setValue(examples[selectedndx].code);
+			editor.gotoLine(1);
+		}
+	});
+
+
+</script>
+</body>
+</html>
