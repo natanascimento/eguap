@@ -28,4 +28,7 @@ var examples = [{
 }, {
     name: 'Listas',
     code: '# Uso de listas\n\nfuncao test(array):\n\tarray.append(11)\n\tretorna array\nfim\n\nfuncao clear(array):\n\tenquanto len(array) > 0:\n\t\tarray.pop()\n\tfim\n\tretorna array\nfim\n\n\nb = 9\na = [1,b,3.2,4,5.2,6,7,8]\nd = []\nescreva a\nescreva a[0]\nc = a[4]\nescreva c\na[5] = 22\nescreva a[5]\nescreva a\nescreva "Lista vazia: " + d\ne = len(a)\nescreva "Tamanho : " + e\n\nd.append(2)\nd.append(6)\nescreva "Anexado 2, 6 "\nescreva d\nd.pop()\nescreva "Usando pop"\nescreva d\nd = test(d)\nescreva d\na = clear(a)\nescreva a'
+}, {
+    name: 'Bhaskara',
+    code: 'funcao delta(d,a,b,c,x1,x2):\n\td = b**2\n\tf = 4*a*c \n\td = d-f\n\tescreva d\n\td = d**0.5\n\tescreva d\n\t#valores de x\n\tx1 = -b+d\n\tx1 = x1/2*a\n\tescreva x1\n\tx2 = -b-d\n\tx2 = x2/2*a\n\tescreva x2\n\tr1 = x1**2\n\tr1 = a*r1\n\tr1 = b*x1 + r1\n\tr1 = r1 + c\n\tescreva r1\n\tr2 = x2**2\n\tr2 = a*r2\n\tr2 = b*x2 + r2\n\tr2 = r2 + c\n\tescreva r2\n\nfim\n\na = 1\n\nb = -1\n\nc = -30\n\ndelta(d,a,b,c,x1,x2)'
 }];
