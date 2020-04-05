@@ -49,7 +49,7 @@ function eval(astNode) {
 				} else {
 					var identifierValue = executionstack.top()[members[i].name];
 					if(!members[i].name in executionstack.top()) {
-						throw "NameError: name '"+members[i].name+"' is not defined in list declaration\n";
+						throw "NameError: nome '"+members[i].name+"' não está definido na declaração de lista\n";
 					}
 					vec.push(identifierValue);
 				}
@@ -60,7 +60,7 @@ function eval(astNode) {
 			// Handle rhs of a array index value retrieval
 			var identifierValue = executionstack.top()[astNode.name];
 			if(!astNode.name in executionstack.top()) {
-				throw "NameError: name '"+astNode.name+"' is not defined\n";
+				throw "NameError: nome '"+astNode.name+"' não está definido\n";
 			}
 			v = identifierValue[parseInt(eval(astNode.index))]
 			break;
@@ -68,11 +68,11 @@ function eval(astNode) {
 			// Handle len()
 			var identifierValue = executionstack.top()[astNode.name];
 			if(!astNode.name in executionstack.top()) {
-				throw "NameError: name '"+astNode.name+"' is not defined in list declaration\n";
+				throw "NameError: nome '"+astNode.name+"' não está definido na declação de lista\n";
 			}
 			
 			if(!Array.isArray(identifierValue)) {
-				throw "TypeError: object of type '"+(typeof identifierValue)+"' has no len()";
+				throw "TypeError: objeto de tipo '"+(typeof identifierValue)+"' não tem len()";
 			}
 			v = identifierValue.length;
 			break; 
@@ -80,10 +80,10 @@ function eval(astNode) {
 			// Handle list.append(expr) and list.pop(expr)
 			var identifierValue = executionstack.top()[astNode.name];
 			if(!astNode.name in executionstack.top()) {
-				throw "NameError: name '"+astNode.name+"' is not defined in list declaration\n";
+				throw "NameError: nome '"+astNode.name+"' não está definido na declação de lista\n";
 			}
 			if(!Array.isArray(identifierValue)) {
-				throw "AttributeError: '"+(typeof identifierValue)+"' object has no attribute '"+astNode.method+"'";
+				throw "AttributeError: '"+(typeof identifierValue)+"' objeto não tem atributo '"+astNode.method+"'";
 			}
 
 			if(astNode.method == "append") {
@@ -91,7 +91,7 @@ function eval(astNode) {
 			} else if(astNode.method == "pop") {
 				identifierValue.pop();				
 			} else {
-				throw "AttributeError: '"+astNode.name+"' has no method '"+astNode.method+"'";
+				throw "AttributeError: '"+astNode.name+"' não tem método '"+astNode.method+"'";
 			}
 			
 			break;	
@@ -100,14 +100,14 @@ function eval(astNode) {
 			funcName = astNode.name;
 		 	functionNode = functions[funcName];
 			if(!funcName in functions) {
-				throw "NameError: function named '"+funcName+"' is not defined";
+				throw "NameError: função nomeada '"+funcName+"' não está definida";
 			}
 			
 			// Match given parameters to function signature in number only (no typing for egua)
 			functionparams = functionNode.parameters;
 			callparams = astNode.parameters;
 			if(functionparams.length != callparams.length) {
-				throw "TypeError: "+funcName+"() takes exactly "+functionparams.length+" arguments ("+callparams.length+" given)";
+				throw "TypeError: "+funcName+"() leva exatamente "+functionparams.length+" argumentos ("+callparams.length+" dado)";
 			}
 			
 			// New stack with given params included to match signature
@@ -119,7 +119,7 @@ function eval(astNode) {
 				if(callpari.name) {
 					var identifierValue = executionstack.top()[callpari.name];
 					if(!callpari.name in executionstack.top()) {
-						throw "NameError: name '"+astNode.name+"' is not defined\n";
+						throw "NameError: nome '"+astNode.name+"' não está definido\n";
 					}
 					newstackframe[funcpari.name] = identifierValue
 				} else {
@@ -160,7 +160,7 @@ function eval(astNode) {
 			// Look up value in table
 			var identifierValue = executionstack.top()[astNode.name];
 			if(!astNode.name in executionstack.top()) {
-				throw "NameError: name '"+astNode.name+"' is not defined\n";
+				throw "NameError: nome '"+astNode.name+"' não está definido\n";
 			}
 			v = identifierValue;
 			break;
@@ -265,7 +265,7 @@ function eval(astNode) {
 			break;		
 		
 		case 'UMINUS': v = -1 * eval(astNode.left); break;
-		default: throw "internal error: bad node '"+astNode.type+"'";
+		default: throw "internal error: nó ruim '"+astNode.type+"'";
 	}
 	return v;
 }
