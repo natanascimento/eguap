@@ -296,9 +296,9 @@ parse: function parse(input) {
                     }
                 }
                 if (this.lexer.showPosition) {
-                    errStr = 'Parse error on line ' + (yylineno + 1) + ':\n' + this.lexer.showPosition() + '\nExpecting ' + expected.join(', ') + ', got \'' + (this.terminals_[symbol] || symbol) + '\'';
+                    errStr = 'Erro de análise na Linha ' + (yylineno + 1) + ':\n' + this.lexer.showPosition() + '\nEsperando ' + expected.join(', ') + ', obteve \'' + (this.terminals_[symbol] || symbol) + '\'';
                 } else {
-                    errStr = 'Parse error on line ' + (yylineno + 1) + ': Unexpected ' + (symbol == EOF ? 'end of input' : '\'' + (this.terminals_[symbol] || symbol) + '\'');
+                    errStr = 'Erro de análise na Linha ' + (yylineno + 1) + ': Inesperado ' + (symbol == EOF ? 'fim de entrada' : '\'' + (this.terminals_[symbol] || symbol) + '\'');
                 }
                 this.parseError(errStr, {
                     text: this.lexer.match,
@@ -309,7 +309,7 @@ parse: function parse(input) {
                 });
             }
         if (action[0] instanceof Array && action.length > 1) {
-            throw new Error('Parse Error: multiple actions possible at state: ' + state + ', token: ' + symbol);
+            throw new Error('Erro de análise: múltiplas ações possíveis no estado: ' + state + ', símbolo: ' + symbol);
         }
         switch (action[0]) {
         case 1:
@@ -637,7 +637,7 @@ next:function () {
         if (this._input === "") {
             return this.EOF;
         } else {
-            return this.parseError('Lexical error on line ' + (this.yylineno + 1) + '. Unrecognized text.\n' + this.showPosition(), {
+            return this.parseError('Erro léxico na linha ' + (this.yylineno + 1) + '. Texto não reconhecido.\n' + this.showPosition(), {
                 text: "",
                 token: null,
                 line: this.yylineno
