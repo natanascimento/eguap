@@ -16,7 +16,7 @@ body {
 	top: 0;
 	right: 0;
 	left : 0;
-	height: 44px;
+	height: 55px;
 	background-color:#3B3B3B;
 	-webkit-box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.75);
@@ -43,7 +43,7 @@ body {
 }
 
 #aaa{
-	height: 43px;
+	height: 55px;
 }
 
 #clearbtn {
