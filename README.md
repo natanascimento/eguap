@@ -1,6 +1,6 @@
 <br />
 <p align="center">
-  <img src="logo.png" alt="Logo">
+  <img src="logop.png" alt="Logo">
 
   <h3 align="center">eguap versão 0.1.2</h3>
 
