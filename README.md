@@ -1,6 +1,6 @@
 <br />
 <p align="center">
-  <img src="logop.png" alt="Logo">
+  <img src="logop.png" alt="Logo" widht="100px" height="100px">
 
   <h3 align="center">eguap versão 0.1.2</h3>
 
@@ -18,10 +18,8 @@
     <br />
     <br />
     <img src="https://img.shields.io/github/issues/eguatech/eguap" />
-    <img src="https://img.shields.io/badge/status-construção-green" />
     <img src="https://img.shields.io/github/stars/eguatech/eguap" />
     <img src="https://img.shields.io/github/forks/eguatech/eguap" />
-    <img src="https://img.shields.io/badge/escrito%20em-javascript-yellow" />
     <img src="https://img.shields.io/github/license/eguatech/eguap" />
     <br />
   </p>
