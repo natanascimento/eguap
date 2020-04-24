@@ -7,7 +7,7 @@
   <p align="center">
     Uma linguagem de programação simples e moderna para aprender a programar.
     <br />
-    <a href="https://docs.egua.tech/"><strong>Documentação »</strong></a>
+    <a href="https://egua.tech/docs"><strong>Documentação »</strong></a>
     <br />
     <br />
     <a href="https://egua.tech/eguap/">IDE Online</a>
